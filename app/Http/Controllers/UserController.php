@@ -78,7 +78,7 @@ class UserController extends Controller
     public function forceDelete($id)
     {
         $user = User::withTrashed()->find($id);
-        Gate::authorize('forceDelete', User::class);
+        Gate::authorize('forceDelete', $user);
         $user->forceDelete();
         toastr()->positionClass('toast-top-center')->success('El usuario a sido eliminado completamente.');
 
